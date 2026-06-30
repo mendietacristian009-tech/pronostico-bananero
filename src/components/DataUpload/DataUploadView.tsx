@@ -82,78 +82,8 @@ export function DataUploadView() {
         <p className="text-gray-500 mt-1">Cargar datos reales de producción para comparar con pronósticos</p>
       </div>
 
-      {/* File Upload Section */}
-      <div className="order-3 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
-        <div className="flex items-start sm:items-center space-x-3 mb-6">
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Upload className="h-5 w-5 text-blue-600" />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900">Carga Masiva de Datos</h3>
-            <p className="text-sm text-gray-500">Subir archivo Excel o CSV con datos de producción</p>
-          </div>
-        </div>
-
-        <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-8 text-center hover:border-gray-400 transition-colors">
-          <input
-            type="file"
-            accept=".xlsx,.xls,.csv"
-            onChange={handleFileUpload}
-            className="hidden"
-            id="file-upload"
-            disabled={uploadStatus === 'processing'}
-          />
-          <label htmlFor="file-upload" className="cursor-pointer">
-            <div className="space-y-4">
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto">
-                <FileText className="h-8 w-8 text-gray-400" />
-              </div>
-              <div>
-                <p className="text-base sm:text-lg font-medium text-gray-900 break-words">
-                  {selectedFile ? selectedFile.name : 'Seleccionar archivo'}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Formatos soportados: Excel (.xlsx, .xls) y CSV
-                </p>
-              </div>
-            </div>
-          </label>
-        </div>
-
-        {uploadStatus !== 'idle' && (
-          <div className={`mt-4 p-4 rounded-lg flex items-start space-x-3 ${
-            uploadStatus === 'success' ? 'bg-green-50 border border-green-200' :
-            uploadStatus === 'error' ? 'bg-red-50 border border-red-200' :
-            'bg-blue-50 border border-blue-200'
-          }`}>
-            {uploadStatus === 'processing' && (
-              <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-600 border-t-transparent"></div>
-            )}
-            {uploadStatus === 'success' && <CheckCircle className="h-5 w-5 text-green-600" />}
-            {uploadStatus === 'error' && <AlertCircle className="h-5 w-5 text-red-600" />}
-            <p className={`text-sm ${
-              uploadStatus === 'success' ? 'text-green-800' :
-              uploadStatus === 'error' ? 'text-red-800' :
-              'text-blue-800'
-            }`}>
-              {uploadMessage}
-            </p>
-          </div>
-        )}
-
-        <div className="mt-6 bg-gray-50 rounded-lg p-4">
-          <h4 className="text-sm font-medium text-gray-900 mb-2">Formato del archivo:</h4>
-          <div className="text-sm text-gray-600 space-y-1">
-            <p>• <strong>Columna A:</strong> Nombre de la empacadora</p>
-            <p>• <strong>Columna B:</strong> Semana (número)</p>
-            <p>• <strong>Columna C:</strong> Año</p>
-            <p>• <strong>Columna D:</strong> Cajas producidas (número)</p>
-          </div>
-        </div>
-      </div>
-
       {/* Manual Data Entry */}
-      <div className="order-1 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-start sm:items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
             <Package className="h-5 w-5 text-green-600" />
@@ -248,7 +178,7 @@ export function DataUploadView() {
       </div>
 
       {/* Pending Forecasts */}
-      <div className="order-2 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-start sm:items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
             <Calendar className="h-5 w-5 text-orange-600" />
@@ -315,6 +245,75 @@ export function DataUploadView() {
             </table>
           </div>
         )}
+      </div>
+      {/* File Upload Section */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+        <div className="flex items-start sm:items-center space-x-3 mb-6">
+          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <Upload className="h-5 w-5 text-blue-600" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900">Carga Masiva de Datos</h3>
+            <p className="text-sm text-gray-500">Subir archivo Excel o CSV con datos de producción</p>
+          </div>
+        </div>
+
+        <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-8 text-center hover:border-gray-400 transition-colors">
+          <input
+            type="file"
+            accept=".xlsx,.xls,.csv"
+            onChange={handleFileUpload}
+            className="hidden"
+            id="file-upload"
+            disabled={uploadStatus === 'processing'}
+          />
+          <label htmlFor="file-upload" className="cursor-pointer">
+            <div className="space-y-4">
+              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mx-auto">
+                <FileText className="h-8 w-8 text-gray-400" />
+              </div>
+              <div>
+                <p className="text-base sm:text-lg font-medium text-gray-900 break-words">
+                  {selectedFile ? selectedFile.name : 'Seleccionar archivo'}
+                </p>
+                <p className="text-sm text-gray-500">
+                  Formatos soportados: Excel (.xlsx, .xls) y CSV
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        {uploadStatus !== 'idle' && (
+          <div className={`mt-4 p-4 rounded-lg flex items-start space-x-3 ${
+            uploadStatus === 'success' ? 'bg-green-50 border border-green-200' :
+            uploadStatus === 'error' ? 'bg-red-50 border border-red-200' :
+            'bg-blue-50 border border-blue-200'
+          }`}>
+            {uploadStatus === 'processing' && (
+              <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-600 border-t-transparent"></div>
+            )}
+            {uploadStatus === 'success' && <CheckCircle className="h-5 w-5 text-green-600" />}
+            {uploadStatus === 'error' && <AlertCircle className="h-5 w-5 text-red-600" />}
+            <p className={`text-sm ${
+              uploadStatus === 'success' ? 'text-green-800' :
+              uploadStatus === 'error' ? 'text-red-800' :
+              'text-blue-800'
+            }`}>
+              {uploadMessage}
+            </p>
+          </div>
+        )}
+
+        <div className="mt-6 bg-gray-50 rounded-lg p-4">
+          <h4 className="text-sm font-medium text-gray-900 mb-2">Formato del archivo:</h4>
+          <div className="text-sm text-gray-600 space-y-1">
+            <p>• <strong>Columna A:</strong> Nombre de la empacadora</p>
+            <p>• <strong>Columna B:</strong> Semana (número)</p>
+            <p>• <strong>Columna C:</strong> Año</p>
+            <p>• <strong>Columna D:</strong> Cajas producidas (número)</p>
+          </div>
+        </div>
       </div>
     </div>
   );
