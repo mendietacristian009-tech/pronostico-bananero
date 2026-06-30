@@ -76,14 +76,14 @@ export function DataUploadView() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col gap-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Carga de Datos de Producción</h2>
         <p className="text-gray-500 mt-1">Cargar datos reales de producción para comparar con pronósticos</p>
       </div>
 
       {/* File Upload Section */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="order-3 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-start sm:items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
             <Upload className="h-5 w-5 text-blue-600" />
@@ -153,7 +153,7 @@ export function DataUploadView() {
       </div>
 
       {/* Manual Data Entry */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="order-1 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-start sm:items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
             <Package className="h-5 w-5 text-green-600" />
@@ -248,7 +248,7 @@ export function DataUploadView() {
       </div>
 
       {/* Pending Forecasts */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="order-2 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
         <div className="flex items-start sm:items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
             <Calendar className="h-5 w-5 text-orange-600" />
