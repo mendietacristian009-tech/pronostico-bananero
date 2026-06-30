@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { DataProvider } from './contexts/DataContext';
-import { LoginForm } from './components/Auth/LoginForm';
+import { LoginForm } from './components/auth/LoginForm';
 import { Sidebar } from './components/Layout/Sidebar';
 import { Header } from './components/Layout/Header';
 import { StatsCards } from './components/Dashboard/StatsCards';
